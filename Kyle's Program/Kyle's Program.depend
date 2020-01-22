@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1579735786 source:d:\git\c-code-2020\kyle's program\main.c
+	<stdio.h>
+	<stdlib.h>
+
