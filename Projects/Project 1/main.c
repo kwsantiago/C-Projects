@@ -10,15 +10,25 @@ int main()
     printf("\n");
     if(i==191 || i==919){
         if(i==191){
-        printf("191");
+        do_191();
         }
         else if(i==919){
-        printf("919");
+        do_919();
     }
     }// end if
     else {
-        printf("Goodbye!");
+        printf("Good bye!");
     }
 
     return 0;
+}
+
+int do_191()
+{
+    printf("191");
+}
+
+int do_919()
+{
+    printf("919");
 }
