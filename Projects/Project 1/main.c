@@ -21,14 +21,14 @@ int main()
     }
 
     return 0;
-}
+}// end main
 
 int do_191()
 {
     printf("191");
-}
+}// end function
 
 int do_919()
 {
     printf("919");
-}
+}// end function
