@@ -3,20 +3,18 @@
 
 int main()
 {
-    float i;
+    char i[10];
     printf("\n");
     printf("Enter either 191 or 919, anything else will quit: ");
-    scanf("%f", &i);
+    scanf("%s", &i);
     printf("\n");
-    if(i==191 || i==919){
-        if(i==191){
+    if(i[0]=='1' && i[1]=='9' && i[2]=='1'){
         do_191();
-        }
-        else if(i==919){
+}// end if
+    else if(i[0]=='9' && i[1]=='1' && i[2]=='9'){
         do_919();
-    }
-    }// end if
-    else{
+}// end if
+    else {
         printf("Good bye!");
     }
 
@@ -25,12 +23,74 @@ int main()
 
 int do_191()
 {
-    printf("191");
-    return 0;
+  int i,j,k,count,number;
+  number = 5;
+  count=number-1;
+  for(i=1;i<=2*(number)-1;i+=2)
+  {
+   for(k=1;k<=count;k++)
+    {
+     printf(" ");
+    }
+   count--;
+   for(j=1;j<=i;j++)
+   {
+    printf("%d",j);
+   }
+   printf("\n");
+  }
+  count=1;
+  for(i=2*(number)-1;i>=1;i-=2)
+  {
+   if(i!=(2*(number)-1))
+   {
+    for(k=1;k<=count;k++)
+    {
+     printf(" ");
+    }
+    count++;
+    for(j=1;j<=i;j++)
+    {
+     printf("%d",j);
+    }
+    printf("\n");
+   }
+  }
 }// end function
 
 int do_919()
 {
-    printf("919");
-    return 0;
+  int i,j,k,count,number;
+  number = 5;
+  count=number-1;
+  for(i=1;i<=2*(number)-1;i+=2)
+  {
+   for(k=1;k<=count;k++)
+    {
+     printf(" ");
+    }
+   count--;
+   for(j=1;j<=i;j++)
+   {
+    printf("%d",j);
+   }
+   printf("\n");
+  }
+  count=1;
+  for(i=2*(number)-1;i>=1;i-=2)
+  {
+   if(i!=(2*(number)-1))
+   {
+    for(k=1;k<=count;k++)
+    {
+     printf(" ");
+    }
+    count++;
+    for(j=1;j<=i;j++)
+    {
+     printf("%d",j);
+    }
+    printf("\n");
+   }
+  }
 }// end function
