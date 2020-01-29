@@ -12,48 +12,50 @@ int main()
     printf("\n");
     if(i[0]=='1' && i[1]=='9' && i[2]=='1'){
         do_191();
-}// end if
+    }// end if
     else if(i[0]=='9' && i[1]=='1' && i[2]=='9'){
         do_919();
-}// end if
-    else {
+    }// end if
+    else{
         printf("Good bye!");
         run = 1;
-    }
-    }// end while
+    }// end else
+}// end while
     return 0;
 }// end main
 
 int do_191()
 {
-  int i,j,k,count;
-  count=4;
-  for(i=1;i<=2*5-1;i+=2)
+  int a;
+  int b;
+  int c;
+  int rows = 4;
+  for(a=1;a<=9;a+=2)
   {
-   for(k=1;k<=count;k++)
+   for(c=1;c<=rows;c++)
     {
      printf(" ");
     }
-   count--;
-   for(j=1;j<=i;j++)
+   rows--;
+   for(b=1;b<=a;b++)
    {
-    printf("%d",j);
+    printf("%d",b);
    }
    printf("\n");
   }
-  count=1;
-  for(i=2*5-1;i>=1;i-=2)
+  rows=1;
+  for(a=9;a>=1;a-=2)
   {
-   if(i!=(2*5-1))
+   if(a!=(9))
    {
-    for(k=1;k<=count;k++)
+    for(c=1;c<=rows;c++)
     {
      printf(" ");
     }
-    count++;
-    for(j=1;j<=i;j++)
+    rows++;
+    for(b=1;b<=a;b++)
     {
-     printf("%d",j);
+     printf("%d",b);
     }
     printf("\n");
    }
@@ -62,34 +64,36 @@ int do_191()
 
 int do_919()
 {
-  int i,j,k,count;
-  count=4;
-  for(i=1;i<=2*5-1;i+=2)
+  int a;
+  int b;
+  int c;
+  int rows = 4;
+  for(a=1;a<=9;a+=2)
   {
-   for(k=1;k<=count;k++)
+   for(c=1;c<=rows;c++)
     {
      printf(" ");
     }
-   count--;
-   for(j=1;j<=i;j++)
+   rows--;
+   for(b=1;b<=a;b++)
    {
-    printf("%d",j);
+    printf("%d",b);
    }
    printf("\n");
   }
-  count=1;
-  for(i=2*5-1;i>=1;i-=2)
+  rows=1;
+  for(a=9;a>=1;a-=2)
   {
-   if(i!=(2*5-1))
+   if(a!=(9))
    {
-    for(k=1;k<=count;k++)
+    for(c=1;c<=rows;c++)
     {
      printf(" ");
     }
-    count++;
-    for(j=1;j<=i;j++)
+    rows++;
+    for(b=1;b<=a;b++)
     {
-     printf("%d",j);
+     printf("%d",b);
     }
     printf("\n");
    }
