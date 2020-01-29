@@ -61,11 +61,11 @@ int do_919()
   int rows = 4;
   for(a=1;a<=9;a+=2){
    for(c=1;c<=rows;c++){
-     printf(" ");
+     printf("%d",c);
 }
    rows--;
    for(b=1;b<=a;b++){
-    printf("%d",b);
+    printf(" ");
     }
    printf("\n");
 }//end for
@@ -73,11 +73,11 @@ int do_919()
   for(a=9;a>=1;a-=2){
    if(a!=(9)){
     for(c=1;c<=rows;c++){
-     printf(" ");
+     printf("%d",c);
 }
     rows++;
     for(b=1;b<=a;b++){
-     printf("%d",b);
+     printf(" ");
 }
     printf("\n");
 }
