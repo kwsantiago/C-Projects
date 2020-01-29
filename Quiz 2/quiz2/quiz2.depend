@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1580137043 source:d:\git\c-code-2020\quiz 2\quiz2\main.c
+	<stdio.h>
+	<stdlib.h>
+
