@@ -8,7 +8,7 @@ int main()
     while(run == 0){
     printf("\n");
     printf("Enter either 191 or 919, anything else will quit: ");
-    scanf("%s", &i);
+    scanf("%s", i);
     printf("\n");
     if(i[0]=='1' && i[1]=='9' && i[2]=='1'){
         do_191();
@@ -26,10 +26,8 @@ int main()
 
 int do_191()
 {
-  int a;
-  int b;
-  int c;
-  int rows = 4;
+  int a,b,c,rows;
+  rows = 4;
   for(a=1;a<=9;a+=2){
    for(c=1;c<=rows;c++){
      printf(" ");
