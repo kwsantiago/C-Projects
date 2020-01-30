@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
-{
+int main(){
     char i[10];
     int run = 0;
     while(run == 0){
@@ -24,8 +23,7 @@ int main()
     return 0;
 }// end main
 
-int do_191()
-{
+int do_191(){
   int a,b,c,rows;
   rows = 4;
   for(a=1;a<=9;a+=2){
@@ -53,8 +51,7 @@ int do_191()
   }//end for
 }// end function
 
-int do_919()
-{
+int do_919(){
   int a;
   int b;
   int c;
@@ -67,7 +64,7 @@ int do_919()
    for(b=1;b<=a;b++){
     printf(" ");
     }
-   printf("\n");
+   printf("%d\n",a);
 }//end for
   rows=1;
   for(a=9;a>=1;a-=2){
@@ -79,7 +76,7 @@ int do_919()
     for(b=1;b<=a;b++){
      printf(" ");
 }
-    printf("\n");
+    printf("%d\n",a);
 }
   }//end for
-}// end functions
+}// end function
