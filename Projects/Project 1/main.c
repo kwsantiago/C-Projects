@@ -34,7 +34,7 @@ int do_191()
 }
    rows--;
    for(b=1;b<=a;b++){
-    printf("%d",b);
+    printf("%d",a);
     }
    printf("\n");
 }//end for
@@ -46,7 +46,7 @@ int do_191()
 }
     rows++;
     for(b=1;b<=a;b++){
-     printf("%d",b);
+     printf("%d",a);
 }
     printf("\n");
 }
@@ -61,7 +61,7 @@ int do_919()
   int rows = 4;
   for(a=1;a<=9;a+=2){
    for(c=1;c<=rows;c++){
-     printf("%d",c);
+     printf("%d",a);
 }
    rows--;
    for(b=1;b<=a;b++){
@@ -73,7 +73,7 @@ int do_919()
   for(a=9;a>=1;a-=2){
    if(a!=(9)){
     for(c=1;c<=rows;c++){
-     printf("%d",c);
+     printf("%d",a);
 }
     rows++;
     for(b=1;b<=a;b++){
@@ -82,4 +82,4 @@ int do_919()
     printf("\n");
 }
   }//end for
-}// end function
+}// end functions
