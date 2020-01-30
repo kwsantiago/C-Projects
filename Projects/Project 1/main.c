@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 int main(){
-    char i[10];
+    char i[15];
     int run = 0;
     while(run == 0){
     printf("\n");
@@ -52,10 +52,8 @@ int do_191(){
 }// end function
 
 int do_919(){
-  int a;
-  int b;
-  int c;
-  int rows = 4;
+  int a,b,c,rows;
+  rows = 4;
   for(a=1;a<=9;a+=2){
    for(c=1;c<=rows;c++){
      printf("%d",a);
