@@ -3,7 +3,7 @@
 int main(void)
 {
     int twenties,tens,fives,ones,amount = 0;
-    printf("Enter a dollar amount: ");
+    printf("\nEnter a dollar amount: ");
     scanf("%d",&amount);
 
     twenties = amount/20;
