@@ -12,6 +12,5 @@ int main(){
 
     printf("Item\tUnit\tPurchase\n\tPrice\tDate\n%d\t$%.2f\t%d/%d/%d",item_number,unit_price,month,day,year);
 
-
     return 0;
 }// end main
