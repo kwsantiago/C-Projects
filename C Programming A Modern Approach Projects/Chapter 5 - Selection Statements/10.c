@@ -2,7 +2,7 @@
 
 int main(void)
 {
-    int grade,temp;
+    int grade;
 
     printf("Enter numerical grade: ");
     scanf("%d", &grade);
@@ -12,8 +12,8 @@ int main(void)
         return 0;
     }
 
-    temp = grade/10;
-    switch (temp) {
+    grade /= 10;
+    switch (grade){
         case 9: case 10: printf("Letter Grade: A");break;
         case 8: printf("Letter Grade: B");break;
         case 7: printf("Letter Grade: C");break;
