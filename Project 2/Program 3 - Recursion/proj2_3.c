@@ -3,7 +3,6 @@
 int power(int x, int n);
 
 int main(void){
-
     int x, n;
     printf("\nEnter value for x: ");
     scanf("%d", &x);
@@ -14,12 +13,13 @@ int main(void){
 }// end main
 
 int power(int x, int n){
-    if (n < 1){
-    return 1;
-    }
+    int i;
 
-    if (n%2 == 0){
-        int i = power(x, n/2);
+    if(n < 1)
+    return 1;
+
+    if(n%2 == 0){
+        i = power(x, n/2);
         return i*i;
     }else{
         return x * power(x, n-1);
