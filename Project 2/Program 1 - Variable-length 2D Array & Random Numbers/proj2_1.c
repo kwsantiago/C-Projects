@@ -51,6 +51,6 @@ int size,sum,min,max;
   printf("\n");
 }
 
-int random_int(int min, int max){
+int random_int(const int min, const int max){
    return min + rand() % (max+1 - min);
 }// end function
