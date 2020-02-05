@@ -16,6 +16,8 @@ int generate_square(){
 
   printf("\nEnter the size of a 2D square: ");
   scanf("%d",&size);
+  printf("\n");
+
   int *a[size];
   for(i = 0; i<size;i++)
   a[i] = (int*)malloc(size * size * sizeof(int));
@@ -30,7 +32,7 @@ int generate_square(){
   for(i = 0; i<size;i++){
       for(int j = 0; j<size;j++){
           a[i][j] = random_int(min,max);
-          printf("%d ",a[i][j]);
+          printf("    %d",a[i][j]);
       }
       printf("\n");
   }
