@@ -3,6 +3,7 @@
 #include <time.h>
 
 int random_int(const int min, const int max);
+int generate_square();
 
 int main(void){
   srand((unsigned) time(NULL));
@@ -36,23 +37,23 @@ int generate_square(){
   }
 
   printf("\nRow totals:");
-  for (i = 0; i < size; i++) {
+  for(i = 0; i<size;i++){
     sum = 0;
-    for (j = 0; j < size; j++)
+    for(j = 0; j<size;j++)
       sum += a[i][j];
-    printf(" %d", sum);
+    printf(" %d",sum);
   }
 
   printf("\nColumn totals:");
-  for (j = 0; j < size; j++) {
+  for(j = 0; j<size;j++){
     sum = 0;
-    for (i = 0; i < size; i++)
+    for (i = 0; i<size;i++)
       sum += a[i][j];
-    printf(" %d", sum);
+    printf(" %d",sum);
   }
 
   printf("\n");
-}
+}// end function
 
 int random_int(const int min, const int max){
    return min + rand() % (max+1 - min);
