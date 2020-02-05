@@ -14,7 +14,7 @@ int main(void){
 }// end main
 
 int power(int x, int n){
-    if (n == 0 || x ==0 || n < 0 || x < 0){
+    if (n < 1){
     return 1;
     }
 
