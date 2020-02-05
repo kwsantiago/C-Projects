@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-int RandomNumberGenerator(const int min, const int max);
+int random_int(const int min, const int max);
 
 int main(void){
   srand((unsigned) time(NULL));
