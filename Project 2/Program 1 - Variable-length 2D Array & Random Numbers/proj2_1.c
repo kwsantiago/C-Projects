@@ -28,7 +28,7 @@ int generate_square(){
   scanf("%d ... %d",&min,&max);
   printf("\n");
 
-  for(i = 0; i<size;i++){
+  for(i = 0; i< size; i++){
       for(int j = 0; j < size; j++){
           a[i][j] = random_int(min,max);
           printf("%6d", a[i][j]);
