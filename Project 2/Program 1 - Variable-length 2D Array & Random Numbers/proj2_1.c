@@ -12,39 +12,38 @@ int main(void){
 }// end main
 
 int generate_square(){
-int d,sum,min,max;
+int size,sum,min,max;
   int a;
 
   printf("\nEnter the size of a 2D square: ");
-  scanf("%d",&d);
-  a = (int*) malloc(d * d * sizeof(int));
+  scanf("%d",&size);
+  a = (int*) malloc(size * size * sizeof(int));
 
   printf("Enter min and max of random numbers to fill in the array.\n");
   printf("For example, enter -12...8 if min is -12 and max is 8, they must be separated by '...': ");
   scanf("%d ... %d",&min,&max);
+  printf("\n");
 
-  int i,j;
-
-  for(i = 0; i<d;i++){
-      for(j = 0; j<d;j++){
-          a = RandomNumberGenerator(min,max,d);
+  for(int i = 0; i<size;i++){
+      for(int j = 0; j<size;j++){
+          a = random_int(min,max);
           printf("%d ",a);
       }
       printf("\n");
   }
 
   printf("\nRow totals:");
-  for(i = 0; i<d; i++){
+  for(int i = 0; i<size; i++){
     sum = 0;
-    for(j = 0; j<d; j++)
+    for(int j = 0; j<size; j++)
       sum += a;
     printf(" %d", sum);
   }
 
   printf("\nColumn totals:");
-  for (j = 0; j < d; j++) {
+  for (int j = 0; j < size; j++) {
     sum = 0;
-    for (i = 0; i < d; i++)
+    for (int i = 0; i < size; i++)
       sum += a;
     printf(" %d", sum);
   }
@@ -52,10 +51,6 @@ int d,sum,min,max;
   printf("\n");
 }
 
-int RandomNumberGenerator(const int min,const int max,const int d){
-  int RandomNumber = 0;
-  for (int i = 0; i < d; i++){
-    RandomNumber = rand()%(max-min) + min;
-    return RandomNumber;
-  }
+int random_int(int min, int max){
+   return min + rand() % (max+1 - min);
 }// end function
