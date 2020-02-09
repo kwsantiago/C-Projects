@@ -19,16 +19,14 @@ int generate_square(){
   scanf("%d",&size);
   printf("\n");
 
-  int *a[size];
-  for(i = 0; i < size; i++)
-  a[i] = (int*)malloc(size * size * sizeof(int));
+  int a[size][size];
 
   printf("Enter min and max of random numbers to fill in the array.\n");
   printf("For example, enter -12...8 if min is -12 and max is 8, they must be separated by '...': ");
   scanf("%d ... %d",&min,&max);
   printf("\n");
 
-  for(i = 0; i< size; i++){
+  for(i = 0; i < size; i++){
       for(int j = 0; j < size; j++){
           a[i][j] = random_int(min,max);
           printf("%6d", a[i][j]);
