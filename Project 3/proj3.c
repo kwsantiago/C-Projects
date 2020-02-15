@@ -6,7 +6,7 @@ int random_int(const int min, const int max);
 /* #2 */ void summary(int account_num1, float balance1, int account_num2, float balance2);
 /* #3 */ void withdraw(int tmp1, float *balance, float tmp2);
 /* #4 */ void deposit(int tmp1, float *balance, float tmp2);
-/* #5 */ void transfer(int, float *, int, float *, float);
+/* #5 */ void transfer(int tmp1, float *balance1, int tmp3, float *balance2, float tmp2);
 /* #6 */ void exchange(int, float *, int, float *);
 /* #7 */ int *high_balance(int *, float, int *, float, float *);
 /* #8 */ void reset(float *, float *);
