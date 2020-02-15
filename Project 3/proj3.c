@@ -19,29 +19,31 @@ int main(){
 
 int menu(){
     int n = 1;
-    while(n > 0){
+    while(n != 0){
         printf("\n\n-------------------------------------------\nMain Menu\n\n1 New Accounts\n2 All Accounts\n3 Withdraw\n4 Deposit\n5 Transfer Fund\n6 Exchange Balance\n7 High Balance\n8 Reset All Balance\n9 Change Account Number\n0 Exit\n-------------------------------------------\n-> Choose your transaction (1 ,2,..., 9, or 0 to exit): ");
         scanf("%d", &n);
+        printf("\n>>>> ");
         switch(n){
-            case 1: printf("\new account");
+            case 1: printf("new account");
                 break;
-            case 2: printf("\nall account");
+            case 2: printf("all account");
                 break;
-            case 3: printf("\nwithdraw");
+            case 3: printf("withdraw");
                 break;
-            case 4: printf("\ndeposit");
+            case 4: printf("deposit");
                 break;
-            case 5: printf("\ntransfer fund");
+            case 5: printf("transfer fund");
                 break;
-            case 6: printf("\nexchnage balance");
+            case 6: printf("exchnage balance");
                 break;
-            case 7: printf("\nhigh balance");
+            case 7: printf("high balance");
                 break;
-            case 8: printf("\nreset all balance");
+            case 8: printf("reset all balance");
                 break;
-            case 9: printf("\nchange account num");
+            case 9: printf("change account num");
                 break;
-            default: break;
+            case 0: printf("GOOD BYE!\n");
+                break;
         }
     }
 }
