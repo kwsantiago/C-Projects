@@ -4,7 +4,7 @@ int menu();
 int random_int(const int min, const int max);
 /* #1 */ void new_accounts(int *account_num1, float *balance1, int *account_num2, float *balance2);
 /* #2 */ void summary(int account_num1, float balance1, int account_num2, float balance2);
-/* #3 */ void withdraw(int, float *, float);
+/* #3 */ void withdraw(int tmp1, float *balance, float tmp2);
 /* #4 */ void deposit(int, float *, float);
 /* #5 */ void transfer(int, float *, int, float *, float);
 /* #6 */ void exchange(int, float *, int, float *);
@@ -44,9 +44,9 @@ int menu(){
                     printf("Enter amount to withdraw: $");
                     scanf("%f",&tmp2);
                     if(tmp1 == account_num1)
-                    withdraw(tmp1, &tmp2, balance1);
+                    withdraw(tmp1, &balance1, tmp2);
                     else if(tmp1 == account_num2)
-                    withdraw(tmp1, &tmp2, balance2);
+                    withdraw(tmp1, &balance2, tmp2);
                 break;
             case 4: printf("deposit");
                 break;
@@ -79,9 +79,10 @@ void summary(int account_num1, float balance1, int account_num2, float balance2)
     printf(">>>> %d: $%.2f",account_num2,balance2);
 }// end function
 
-void withdraw(int tmp1, float *tmp2, float balance){
-
-    printf("\n>>>> Account %d balance changed from $%.2f to $%.2f",tmp1,*tmp2,balance);
+void withdraw(int tmp1, float *balance, float tmp2){
+    float tmp = *balance;
+    *balance -= tmp2;
+    printf("\n>>>> Account %d balance changed from $%.2f to $%.2f",tmp1,tmp,*balance);
 }// end function
 
 int random_int(const int min, const int max){
