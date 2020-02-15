@@ -48,7 +48,18 @@ int menu(){
                     else if(tmp1 == account_num2)
                     withdraw(tmp1, &balance2, tmp2);
                 break;
-            case 4: printf("deposit");
+            case 4: printf("Enter account to deposit (%d or %d): ",account_num1,account_num2);
+                    scanf("%d",&tmp1);
+                    if(tmp1 != account_num1 && tmp1 != account_num2){
+                        printf("\n>>>> Account %d doesn't exist!",tmp1);
+                        break;
+                    }
+                    printf("Enter amount to deposit: $");
+                    scanf("%f",&tmp2);
+                    if(tmp1 == account_num1)
+                    deposit(tmp1, &balance1, tmp2);
+                    else if(tmp1 == account_num2)
+                    deposit(tmp1, &balance2, tmp2);
                 break;
             case 5: printf("transfer fund");
                 break;
@@ -64,6 +75,10 @@ int menu(){
                 break;
         }
     }
+}// end function
+
+int random_int(const int min, const int max){
+   return min + rand() % (max+1 - min);
 }// end function
 
 void new_accounts(int *account_num1, float *balance1, int *account_num2, float *balance2){
@@ -85,6 +100,8 @@ void withdraw(int tmp1, float *balance, float tmp2){
     printf("\n>>>> Account %d balance changed from $%.2f to $%.2f",tmp1,tmp,*balance);
 }// end function
 
-int random_int(const int min, const int max){
-   return min + rand() % (max+1 - min);
+void deposit(int tmp1, float *balance, float tmp2){
+    float tmp = *balance;
+    *balance += tmp2;
+    printf("\n>>>> Account %d balance changed from $%.2f to $%.2f",tmp1,tmp,*balance);
 }// end function
