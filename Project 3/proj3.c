@@ -5,7 +5,7 @@ int random_int(const int min, const int max);
 /* #1 */ void new_accounts(int *account_num1, float *balance1, int *account_num2, float *balance2);
 /* #2 */ void summary(int account_num1, float balance1, int account_num2, float balance2);
 /* #3 */ void withdraw(int tmp1, float *balance, float tmp2);
-/* #4 */ void deposit(int, float *, float);
+/* #4 */ void deposit(int tmp1, float *balance, float tmp2);
 /* #5 */ void transfer(int, float *, int, float *, float);
 /* #6 */ void exchange(int, float *, int, float *);
 /* #7 */ int *high_balance(int *, float, int *, float, float *);
@@ -20,7 +20,7 @@ int main(){
 }// end main
 
 int menu(){
-    int tmp1, n = 1;
+    int tmp1, tmp3, n = 1;
     tmp1 = 0;
     int account_num1,account_num2;
     account_num1 = account_num2 = 0;
@@ -44,9 +44,9 @@ int menu(){
                     printf("Enter amount to withdraw: $");
                     scanf("%f",&tmp2);
                     if(tmp1 == account_num1)
-                    withdraw(tmp1, &balance1, tmp2);
+                        withdraw(tmp1, &balance1, tmp2);
                     else if(tmp1 == account_num2)
-                    withdraw(tmp1, &balance2, tmp2);
+                        withdraw(tmp1, &balance2, tmp2);
                 break;
             case 4: printf("Enter account to deposit (%d or %d): ",account_num1,account_num2);
                     scanf("%d",&tmp1);
@@ -57,11 +57,28 @@ int menu(){
                     printf("Enter amount to deposit: $");
                     scanf("%f",&tmp2);
                     if(tmp1 == account_num1)
-                    deposit(tmp1, &balance1, tmp2);
+                        deposit(tmp1, &balance1, tmp2);
                     else if(tmp1 == account_num2)
-                    deposit(tmp1, &balance2, tmp2);
+                        deposit(tmp1, &balance2, tmp2);
                 break;
-            case 5: printf("transfer fund");
+            case 5: printf("Enter 'FROM' account and 'TO' account seperated by a space: ");
+                    scanf("%d %d",&tmp1,&tmp3);
+                    if(tmp1 != account_num1 && tmp1 != account_num2){
+                        printf("\n>>>> Account %d doesn't exist!",tmp1);
+                        break;
+                    }else if(tmp3 != account_num1 && tmp3 != account_num2){
+                        printf("\n>>>> Account %d doesn't exist!",tmp3);
+                        break;
+                    }else if(tmp1 == tmp3){
+                        printf("\n>>>> Cannot transfer from and to the same account!");
+                        break;
+                    }
+                    printf("Enter amount to transfer: $");
+                    scanf("%f",&tmp2);
+                    if(tmp1 == account_num1)
+                        transfer(tmp1, &balance1, tmp3, &balance2, tmp2);
+                    else if(tmp1 == account_num2)
+                        transfer(tmp1, &balance2, tmp3, &balance1, tmp2);
                 break;
             case 6: printf("exchnage balance");
                 break;
@@ -104,4 +121,13 @@ void deposit(int tmp1, float *balance, float tmp2){
     float tmp = *balance;
     *balance += tmp2;
     printf("\n>>>> Account %d balance changed from $%.2f to $%.2f",tmp1,tmp,*balance);
+}// end function
+
+void transfer(int tmp1, float *balance1, int tmp3, float *balance2, float tmp2){
+    float tmp_balance1 = *balance1;
+    float tmp_balance2 = *balance2;
+    *balance1 -= tmp2;
+    *balance2 += tmp2;
+    printf("\n>>>> Account %d balance changed from $%.2f to $%.2f",tmp1,tmp_balance1,*balance1);
+    printf("\n>>>> Account %d balance changed from $%.2f to $%.2f",tmp3,tmp_balance2,*balance2);
 }// end function
