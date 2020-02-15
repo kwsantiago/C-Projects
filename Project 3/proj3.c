@@ -101,6 +101,10 @@ int random_int(const int min, const int max){
 void new_accounts(int *account_num1, float *balance1, int *account_num2, float *balance2){
     *account_num1 = random_int(55,59);
     *account_num2 = random_int(55,59);
+    while(*account_num1 == *account_num2){
+        *account_num1 = random_int(55,59);
+        *account_num2 = random_int(55,59);
+    }
     *balance1 = (float)((random_int(-10000,99999))/100.0f);
     *balance2 = (float)((random_int(-10000,99999))/100.0f);
     printf("Two accounts created!");
