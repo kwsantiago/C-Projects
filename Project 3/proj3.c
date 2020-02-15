@@ -2,7 +2,7 @@
 
 int menu();
 int random_int(const int min, const int max);
-/* #1 */ void new_accounts(int *, float *, int *, float *);
+/* #1 */ void new_accounts(int *account_num1, float *balance1, int *account_num2, float *balance2);
 /* #2 */ void summary(int, float, int, float);
 /* #3 */ void withdraw(int, float *, float);
 /* #4 */ void deposit(int, float *, float);
@@ -32,7 +32,7 @@ int menu(){
         switch(n){
             case 1: new_accounts(&account_num1,&balance1,&account_num2,&balance2);
                 break;
-            case 2: printf("all account");
+            case 2: summary(account_num1, balance1, account_num2, balance2);
                 break;
             case 3: printf("withdraw");
                 break;
@@ -60,6 +60,11 @@ void new_accounts(int *account_num1, float *balance1, int *account_num2, float *
     *balance1 = (float)((random_int(-10000,99999))/100.0f);
     *balance2 = (float)((random_int(-10000,99999))/100.0f);
     printf("Two accounts created!");
+}// end function
+
+void summary(int account_num1, float balance1, int account_num2, float balance2){
+    printf("%d: $%.2f\n",account_num1,balance1);
+    printf(">>>> %d: $%.2f",account_num2,balance2);
 }// end function
 
 int random_int(const int min, const int max){
