@@ -93,7 +93,16 @@ int menu(){
                     if(response == 'y')
                     reset(&balance1, &balance2);
                  break;
-            case 9: printf("change account num");
+            case 9: printf("Which account number to change, %d or %d? ",account_num1,account_num2);
+                    scanf("%d",&tmp1);
+                    if(tmp1 != account_num1 && tmp1 != account_num2){
+                        printf("\n>>>> Account %d doesn't exist!",tmp1);
+                        break;
+                    }
+                    if(tmp1 == account_num1)
+                        change(&account_num1, account_num2);
+                    else if(tmp1 == account_num2)
+                        change(&account_num2, account_num1);
                 break;
             case 0: printf("GOOD BYE!\n");
                 break;
@@ -160,4 +169,13 @@ void reset(float *balance1, float *balance2){
     *balance1 = 0.0f;
     *balance2 = 0.0f;
     printf("\n>>>>Balance of both accounts are reset to $0.00");
+}// end function
+
+void change(int *account_num1, int account_num2){
+    int tmp = *account_num1;
+    *account_num1 = random_int(55,59);
+    while(*account_num1 == account_num2 || *account_num1 == tmp){
+        *account_num1 = random_int(55,59);
+    }
+    printf("\n>>>> Account %d is now changed to %d",tmp,*account_num1);
 }// end function
