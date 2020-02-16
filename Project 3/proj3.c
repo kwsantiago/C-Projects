@@ -9,7 +9,7 @@ int random_int(const int min, const int max);
 /* #5 */ void transfer(int tmp1, float *balance1, int tmp3, float *balance2, float tmp2);
 /* #6 */ void exchange(int account_num1, float *balance1, int account_num2, float *balance2);
 /* #7 */ int *high_balance(int *, float, int *, float, float *);
-/* #8 */ void reset(float *, float *);
+/* #8 */ void reset(float *balance1, float *balance2);
 /* #9 */ void change(int *, int);
 
 int main(){
@@ -81,15 +81,18 @@ int menu(){
                     else if(tmp1 == account_num2)
                         transfer(tmp1, &balance2, tmp3, &balance1, tmp2);
                 break;
-            case 6: printf("Are you sure to exchange balance of account 58 and 57 (y/n)? ");
+            case 6: printf("Are you sure to exchange balance of account %d and %d (y/n)? ", account_num1, account_num2);
                     scanf(" %c",&response);
                     if(response == 'y')
                         exchange(account_num1, &balance1, account_num2, &balance2);
                 break;
             case 7: printf("high balance");
                 break;
-            case 8: printf("reset all balance");
-                break;
+            case 8: printf("Are you sure to reset balance of both accounts (y/n)? ");
+                    scanf(" %c",&response);
+                    if(response == 'y')
+                    reset(&balance1, &balance2);
+                 break;
             case 9: printf("change account num");
                 break;
             case 0: printf("GOOD BYE!\n");
@@ -147,4 +150,14 @@ void exchange(int account_num1, float *balance1, int account_num2, float *balanc
     *balance2 = tmp_balance1;
     printf("\n>>>> Account %d balance changed from $%.2f to $%.2f",account_num1,tmp_balance1,*balance1);
     printf("\n>>>> Account %d balance changed from $%.2f to $%.2f",account_num2,tmp_balance2,*balance2);
+}// end function
+
+/*int *high_balance(int *, float, int *, float, float *){
+
+}// end function */
+
+void reset(float *balance1, float *balance2){
+    *balance1 = 0.0f;
+    *balance2 = 0.0f;
+    printf("\n>>>>Balance of both accounts are reset to $0.00");
 }// end function
