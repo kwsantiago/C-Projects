@@ -7,7 +7,7 @@ int random_int(const int min, const int max);
 /* #3 */ void withdraw(int tmp1, float *balance, float tmp2);
 /* #4 */ void deposit(int tmp1, float *balance, float tmp2);
 /* #5 */ void transfer(int tmp1, float *balance1, int tmp3, float *balance2, float tmp2);
-/* #6 */ void exchange(int, float *, int, float *);
+/* #6 */ void exchange(int account_num1, float *balance1, int account_num2, float *balance2);
 /* #7 */ int *high_balance(int *, float, int *, float, float *);
 /* #8 */ void reset(float *, float *);
 /* #9 */ void change(int *, int);
@@ -20,6 +20,7 @@ int main(){
 }// end main
 
 int menu(){
+    char response;
     int tmp1, tmp3, n = 1;
     tmp1 = 0;
     int account_num1,account_num2;
@@ -80,7 +81,10 @@ int menu(){
                     else if(tmp1 == account_num2)
                         transfer(tmp1, &balance2, tmp3, &balance1, tmp2);
                 break;
-            case 6: printf("exchnage balance");
+            case 6: printf("Are you sure to exchange balance of account 58 and 57 (y/n)? ");
+                    scanf(" %c",&response);
+                    if(response == 'y')
+                        exchange(account_num1, &balance1, account_num2, &balance2);
                 break;
             case 7: printf("high balance");
                 break;
@@ -134,4 +138,13 @@ void transfer(int tmp1, float *balance1, int tmp3, float *balance2, float tmp2){
     *balance2 += tmp2;
     printf("\n>>>> Account %d balance changed from $%.2f to $%.2f",tmp1,tmp_balance1,*balance1);
     printf("\n>>>> Account %d balance changed from $%.2f to $%.2f",tmp3,tmp_balance2,*balance2);
+}// end function
+
+void exchange(int account_num1, float *balance1, int account_num2, float *balance2){
+    float tmp_balance1 = *balance1;
+    float tmp_balance2 = *balance2;
+    *balance1 = tmp_balance2;
+    *balance2 = tmp_balance1;
+    printf("\n>>>> Account %d balance changed from $%.2f to $%.2f",account_num1,tmp_balance1,*balance1);
+    printf("\n>>>> Account %d balance changed from $%.2f to $%.2f",account_num2,tmp_balance2,*balance2);
 }// end function
