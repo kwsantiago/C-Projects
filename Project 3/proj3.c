@@ -11,7 +11,7 @@ int random_int(const int min, const int max);
 /* #4 */ void deposit(int tmp1, float *balance, float tmp2);
 /* #5 */ void transfer(int tmp1, float *balance1, int tmp3, float *balance2, float tmp2);
 /* #6 */ void exchange(int account_num1, float *balance1, int account_num2, float *balance2);
-/* #7 */ int *high_balance(int *account_num1, float balance1, int *account_num2, float balance2);
+/* #7 */ int *high_balance(int *account_num1, float balance1, int *account_num2, float balance2, float *difference);
 /* #8 */ void reset(float *balance1, float *balance2);
 /* #9 */ void change(int *account_num1, int account_num2);
 
@@ -89,7 +89,8 @@ int menu(){
                     if(response == 'y')
                         exchange(account_num1, &balance1, account_num2, &balance2);
                 break;
-            case 7: tmp1 = high_balance(&account_num1, balance1, &account_num2, balance2);
+            case 7: tmp2 = balance1 - balance2;
+                    tmp1 = high_balance(&account_num1, balance1, &account_num2, balance2, &tmp2);
                     if(tmp1 == NULL)
                         printf("No any account's balance is $200 or higher than the other's");
                     else if(tmp1 == &account_num1)
@@ -171,12 +172,11 @@ void exchange(int account_num1, float *balance1, int account_num2, float *balanc
     printf("\n>>>> Account %d balance changed from $%.2f to $%.2f",account_num2,tmp_balance2,*balance2);
 }// end function
 
-int *high_balance(int *account_num1, float balance1, int *account_num2, float balance2){
-    float tmp1 = balance1 - balance2;
-    float tmp2 = balance2 - balance1;
-    if(tmp1 >= 200)
+int *high_balance(int *account_num1, float balance1, int *account_num2, float balance2, float *difference){
+    float tmp = balance2 - balance1;
+    if(*difference >= 200)
         return account_num1;
-    else if(tmp2 >= 200)
+    else if(tmp >= 200)
         return account_num2;
     else
         return NULL;
