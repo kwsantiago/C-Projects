@@ -8,7 +8,6 @@
 
 float avg(float a, float b);
 void avg2(float a, float b, float *ans);
-void *avg3(float a, float b, float *z);
 
 int main(){
     printf("\n%.2f", avg(A, B));
