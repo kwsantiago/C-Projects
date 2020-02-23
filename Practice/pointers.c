@@ -29,7 +29,7 @@ float avg(float a, float b){
 }
 
 void avg2(float a, float b, float *ans){
-    *ans = (a+b)/2;
+    *ans = avg(a, b);
 }
 
 float *avg3(float a, float b){
