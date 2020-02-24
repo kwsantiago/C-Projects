@@ -33,7 +33,7 @@ void avg2(float a, float b, float *ans){
 }
 
 float *avg3(float a, float b){
-  float *z = malloc(sizeof(float));
-  *z = avg(a, b);
-  return z;
+    static float z;
+    z = avg(a, b);
+    return &z;
 }
