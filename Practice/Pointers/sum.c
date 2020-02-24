@@ -5,17 +5,22 @@
 int *sum(int a, int b);
 
 int main(){
-    int a, b, *z;
-    a = 5;
-    b = 6;
-    z = sum(a, b);
+    int a, b, *c;
 
-    printf("\n%d\n", *z);
+    printf("\nInput the first number: ");
+    scanf("%d",&a);
+    printf("\nInput the second number: ");
+    scanf("%d",&b);
+    c = sum(a, b);
+
+    printf("The sum of %d and %d is %d",a,b,*c);
+
+    printf("\n");
     return 0;
-}// end main
+}
 
 int *sum(int a, int b){
-    static int sum;
-    sum = a + b;
-    return &sum;
+    static int c;
+    c = a + b;
+    return &c;
 }
