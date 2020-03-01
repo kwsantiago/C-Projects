@@ -10,7 +10,7 @@ typedef struct s_racingCar{
 
 void printList(RacingCar *start){
     RacingCar *currentCar = start;
-    int count = 0;;
+    int count = 0;
 
     while(currentCar != NULL){
         count++;
