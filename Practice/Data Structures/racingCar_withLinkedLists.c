@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 typedef struct s_racingCar{
@@ -20,19 +21,58 @@ void printList(RacingCar *start){
     printf("\nTotal Cars: %d\n", count);
 }
 
+RacingCar *addCar(RacingCar *previous){
+    printf("Enter name and speed of car: ");
+    char input[16];
+    fgets(input, 15, stdin);
+
+    RacingCar *newCar = malloc(sizeof(RacingCar));
+    sscanf(input, "%s %d", newCar->name, &newCar->speed);
+    printf("Added: %s Speed %d\n\n",newCar->name, newCar->speed);
+
+    if(previous != NULL)
+        previous->next = newCar;
+    return newCar;
+}
+
+// Clean memory from malloc
+void CleanUp(RacingCar *start){
+    RacingCar *freeMe = start;
+    RacingCar *holdMe = NULL;
+
+    printf("\nFreeing Memory\n");
+    while(freeMe != NULL){
+        holdMe = freeMe->next;
+        printf("Free Name: %s Speed %d\n", freeMe->name, freeMe->speed);
+        free(freeMe);
+        freeMe = holdMe;
+    }
+}
+
 int main(){
-    RacingCar MonsterEnergy = {"MonsterEnergy", 150, NULL};
-    RacingCar Formula1 = {"Formula1", 200, NULL};
-    RacingCar McLaren = {"McLaren", 166, NULL};
-    RacingCar RedBull = {"RedBull", 134, NULL};
-    RacingCar Buggy = {"Buggy", 50, NULL};
+    char command[16];
+    char input[16];
 
-    MonsterEnergy.next = &Formula1;
-    Formula1.next = &McLaren;
-    McLaren.next = &RedBull;
-    RedBull.next = &Buggy;
+    RacingCar *start = NULL;
+    RacingCar *newest = NULL;
 
-    printList(&MonsterEnergy);
+    while(fgets(input, 15, stdin)){
+        sscanf(input, "%s", command);
 
+        if(strncmp(command, "quit", 4) == 0){
+            printf("\n\nBreaking...\n");
+            break;
+        }else if(strncmp(command, "print", 5) == 0){
+            printList(start);
+        }else if(strncmp(command, "add", 3) == 0){
+            if(start == NULL){
+                start = addCar(NULL);
+                newest = start;
+            }
+            else
+                newest = addCar(newest);
+        }
+    }
+    CleanUp(start);
     return 0;
 }
