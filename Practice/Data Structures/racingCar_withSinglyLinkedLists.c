@@ -30,6 +30,8 @@ RacingCar *addCar(RacingCar *previous){
     sscanf(input, "%s %d", newCar->name, &newCar->speed);
     printf("Added: %s Speed %d\n\n",newCar->name, newCar->speed);
 
+    newCar->next = NULL;
+
     if(previous != NULL)
         previous->next = newCar;
     return newCar;
