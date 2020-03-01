@@ -1,19 +1,19 @@
 #include <stdio.h>
 
-struct s_car{
+typedef struct{
     char *name;
     int people;
     int speed;
     int seats;
-};
+}CarType;
 
-void printCar(struct s_car ourCar){
+void printCar(CarType ourCar){
     printf("\nName: %s\nSpeed: %d\nPeople: %d\nSeats: %d\n", ourCar.name, ourCar.people, ourCar.speed, ourCar.seats);
 }
 
 int main(){
-    struct s_car car1 = {"Focus", 5, 10, 4};
-    struct s_car car2 = {"Cayman", 3, 55, 6};
+    CarType car1 = {"Focus", 5, 10, 4};
+    CarType car2 = {"Cayman", 3, 55, 6};
 
     printCar(car1);
     printCar(car2);
