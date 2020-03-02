@@ -16,8 +16,7 @@ int main(){
     avg2(A, B, &ans);
     printf("\n%.2f", ans);
 
-    float *z;
-    z = avg3(22.1, 33.6);
+    float *z = avg3(22.1, 33.6);
     printf("\n%.2f", *z);
 
     printf("\n");
