@@ -74,6 +74,45 @@ RacingCar *AddToEnd(RacingCar *startPtr){
     return returnPtr;
 }
 
+RacingCar *Delete(RacingCar *startPtr){
+    printf("Enter name to delete: ");
+    char input[16];
+    fgets(input, 15, stdin);
+
+    RacingCar *carRef = startPtr;
+    RacingCar *carToDelete = NULL;
+
+    while(carRef != NULL){
+        if(strncmp(input, carRef->name, strlen(carRef->name)) == 0){
+            carToDelete = carRef;
+            break;
+        }
+        carRef = carRef->next;
+    }
+
+    if(startPtr != NULL && carToDelete == startPtr){
+        if(carToDelete->next != NULL){
+            carToDelete->next->previous = NULL;
+            startPtr = carToDelete->next;
+        }else
+            startPtr = NULL;
+        // end if
+        }else{
+            if(carToDelete != NULL){
+                if(carToDelete->previous != NULL)
+                    carToDelete->previous->next = carToDelete->next;
+
+                if(carToDelete->next != NULL)
+                    carToDelete->next->previous = carToDelete->previous;
+            }
+        }
+    if(carToDelete != NULL){
+        carToDelete = NULL;
+        free(carToDelete);
+    }
+    return startPtr;
+}
+
 // Clean memory from malloc
 void CleanUp(RacingCar *start){
     RacingCar *freeMe = start;
@@ -104,8 +143,13 @@ int main(){
             printList(start);
         }else if(strncmp(command, "addstart", 8) == 0){
             start = AddToStart(start);
-        }else if(strncmp(command, "addend", 6) == 0){
+            printList(start);
+        }else if(strncmp(command, "add", 3) == 0){
             start = AddToEnd(start);
+            printList(start);
+        }else if(strncmp(command, "delete", 6) == 0){
+            start = Delete(start);
+            printList(start);
         }
     }
     CleanUp(start);
