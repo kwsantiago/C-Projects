@@ -113,6 +113,36 @@ RacingCar *Delete(RacingCar *startPtr){
     return startPtr;
 }
 
+RacingCar *Insert(RacingCar *startPtr){
+    printf("Insert new car after car name: ");
+    char input[16];
+    fgets(input, 15, stdin);
+
+    RacingCar *afterCar = startPtr;
+    RacingCar *newCar = NULL;
+
+    if(strncmp(input, afterCar->name, strlen(afterCar->name)) == 0)
+            newCar = MakeNewCar();
+    else{
+        while(afterCar->next != NULL){
+            afterCar = afterCar->next;
+            if(strncmp(input, afterCar->name, strlen(afterCar->name)) == 0)
+                newCar = MakeNewCar();
+                break;
+        }
+    }
+    if(newCar != NULL){
+        newCar->next = afterCar->next;
+        if(newCar->next != NULL)
+            newCar->next->previous = newCar;
+        afterCar->next = newCar;
+        newCar->previous = afterCar;
+    }else
+        printf("Car Not Found\n");
+        
+    return startPtr;
+}
+
 // Clean memory from malloc
 void CleanUp(RacingCar *start){
     RacingCar *freeMe = start;
@@ -149,6 +179,9 @@ int main(){
             printList(start);
         }else if(strncmp(command, "delete", 6) == 0){
             start = Delete(start);
+            printList(start);
+        }else if(strncmp(command, "insert", 6) == 0){
+            start = Insert(start);
             printList(start);
         }
     }
