@@ -2,27 +2,27 @@
 #include <ctype.h>
 
 int main(){
-    int c;
+    int i = 0, c, msg[50];
     printf("\nEnter message: ");
-    
+  
     while((c = toupper(getchar())) != EOF || c != '\n'){
-        if(c != ' '){
-            switch(c){
-                case 'A': c = '4';
-                    break;
-                case 'B': c = '8';
-                    break;
-                case 'E': c = '3';
-                    break;
-                case 'I': c = '1';
-                    break;
-                case 'O': c = '0';
-                    break;
-                case 'S': c = '5';
-                    break;
+        switch(c){
+            case 'A': msg[i] = '4';
+                break;
+            case 'B': msg[i] = '8';
+                break;
+            case 'E': msg[i] = '3';
+                break;
+            case 'I': msg[i] = '1';
+                break;
+            case 'O': msg[i] = '0';
+                break;
+            case 'S': msg[i] = '5';
+                break;
+            default: msg[i] = c;
             }
-        } 
-        putchar(c);
+        putchar(msg[i]);
+        ++i;
     }
     return 0;
 }
