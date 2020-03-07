@@ -17,8 +17,8 @@ int main(){
     i = 0; // reset i back to zero
 
     while((c = getchar()) != EOF){
-        ++len;
-        if(c == ' ' || c == '\t' || c == '\n'){
+        ++len; // count chars while not EOF (aka did not exit out of file) increment len
+        if(c == ' ' || c == '\t' || c == '\n'){ // if space or tab or new line, send len to element in array and restart
             wordLen[i] = len; // add len to the array
             ++i;
             len = -1; // reset len and use -1 to account for \n
