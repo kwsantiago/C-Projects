@@ -8,7 +8,7 @@
 #define MAX_LEN 10
 
 int main(){
-        int c, i = 0, len = 0, wordLen[MAX_LEN];
+    int c, count = 0, i = 0, len = 0, wordLen[MAX_LEN];
     
     printf("Enter %d words:\n", MAX_LEN);
 
@@ -30,56 +30,14 @@ int main(){
 
     printf("\nHistogram\n\n");
     // time to print out the histogram
-    printf("1:");
-    for(i = 0; i < MAX_LEN; i++){
-       if(wordLen[i] == 1)
-            printf("*"); 
+    for(count = 1; count < MAX_LEN+1; count++){ // start at 1 and increment until MAX_LEN
+    	printf("%d:", count); // print what number we are on
+	for(i = 0; i < MAX_LEN; i++){ // go through the array
+  	    if(wordLen[i] == count) // if the number we're on matches with the element in the array,
+	        printf("*"); // print an *
+    	}
+	printf("\n");
     }
-    printf("\n2:");
-    for(i = 0; i < MAX_LEN; i++){
-        if(wordLen[i] == 2)
-            printf("*");
-    }
-    printf("\n3:");
-    for(i = 0; i < MAX_LEN; i++){
-        if(wordLen[i] == 3)
-            printf("*");
-    }
-    printf("\n4:");
-    for(i = 0; i < MAX_LEN; i++){
-        if(wordLen[i] == 4)
-            printf("*");
-    }
-    printf("\n5:");
-    for(i = 0; i < MAX_LEN; i++){
-    if(wordLen[i] == 5)
-       printf("*");
-    }
-    printf("\n6:");
-    for(i = 0; i < MAX_LEN; i++){
-        if(wordLen[i] == 6)
-            printf("*");
-    }
-    printf("\n7:");
-    for(i = 0; i < MAX_LEN; i++){
-        if(wordLen[i] == 7)
-            printf("*");
-    }
-    printf("\n8:");
-    for(i = 0; i < MAX_LEN; i++){
-        if(wordLen[i] == 8)
-            printf("*");
-    }
-    printf("\n9:");
-    for(i = 0; i < MAX_LEN; i++){
-        if(wordLen[i] == 9)
-            printf("*");
-    }
-    printf("\n10:");
-    for(i = 0; i < MAX_LEN; i++){
-        if(wordLen[i] == 10)
-            printf("*");
-    }
-        printf("\n");
+    printf("\n");
     return 0;
 }
