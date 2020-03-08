@@ -28,12 +28,12 @@ int main(){
    
     // time to print the histogram
     printf("\nHistogram:\n\n");
-
-    char letter; // keep track of what letter we are on
-    for(letter = 'a'; letter <= 'z'; letter++){ // go through all the letters in the alphabet
-        printf("%c:", letter); // print which letter we're on
+  
+    int currentChar; // keep track of what char we are on
+    for(currentChar = 32; currentChar < 127; currentChar++){ // go through all possible chars
+        printf("%c:", currentChar); // print which char we're on
         for(i = 0; i< MAX_LEN; i++){ // go through the whole array
-            if(wordLen[i] == letter) // if the letter is the same as in the array, print an * to signify a count of that letter
+            if(wordLen[i] == currentChar) // if the char is the same as in the array, print an * to signify a count of that char
                 printf("*");
         }
         printf("\n");
