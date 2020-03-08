@@ -30,7 +30,7 @@ int main(){
     printf("\nHistogram:\n\n");
 
     char letter; // keep track of what letter we are on
-    for(letter = 'a'; toupper(letter) <= 'z'; letter++){ // go through all the letters in the alphabet
+    for(letter = 'a'; letter <= 'z'; letter++){ // go through all the letters in the alphabet
         printf("%c:", letter); // print which letter we're on
         for(i = 0; i< MAX_LEN; i++){ // go through the whole array
             if(wordLen[i] == letter) // if the letter is the same as in the array, print an * to signify a count of that letter
