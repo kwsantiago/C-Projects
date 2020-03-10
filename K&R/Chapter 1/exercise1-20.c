@@ -13,7 +13,7 @@ int getLine(int arr[], int lim){
     int i = 0, c, j;
     while((c = getchar()) != EOF){
         if(c == '\t'){ // if tab 
-            for(j = 0; j <= 3; j++){ // add 4 spaces to the array
+            for(j = 0; j <= 7; j++){ // add 4 spaces to the array
                 arr[i] = ' ';
                 ++i;
             }
