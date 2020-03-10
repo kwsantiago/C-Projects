@@ -9,9 +9,9 @@
 
 #define MAXLEN 300
 
-int getLine(char arr[], int lim);
+int getLine(int arr[], int lim);
 
-int getLine(char arr[], int lim){
+int getLine(int arr[], int lim){
     int i = 0, c, j;
     while((c = getchar()) != EOF){
         if(c == '\t'){ // if tab 
@@ -28,16 +28,18 @@ int getLine(char arr[], int lim){
             arr[i] = c;
             ++i;
         }
-        putchar(c);
     }
+    return i;
 }
 
 int main(){
-    int i; 
-    char arr[MAXLEN];
+    int count, i, arr[MAXLEN];
 
     for(i = 0; i < MAXLEN; ++i)
         arr[i] = 0;
-    getLine(arr, MAXLEN);
+    count = getLine(arr, MAXLEN);
+    for(i = 0; i < count; i++){
+        printf("%c", arr[i]);
+    }
     return 0;
 }
