@@ -15,13 +15,13 @@ int getLine(int arr[], int lim){
     int i = 0, c, j;
     while((c = getchar()) != EOF){
         if(c == '\t'){ // if tab 
-            for(j = 0; j <= 2; j++){ // add 4 spaces to the array
+            for(j = 0; j <= 2; j++){ // add 2 spaces to the array
                 arr[i] = ' ';
                 ++i;
             }
         }
         if(c == ' '){ // if space
-            arr[i] = ' ';
+            arr[i] = ' '; // add a space to the array
             ++i;
         }
         else{ // else, add input to array
