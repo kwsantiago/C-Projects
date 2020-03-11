@@ -4,25 +4,50 @@
 
 #include <stdio.h>
 
-#define MAXLEN 1000
+#define MAXLEN 2000
 
-int main(){
+int getInput(char arr[]);
+void printResult(char arr[], int i);
+
+int getInput(char arr[]){
     int c, i = 0;
-    char arr[MAXLEN];
+    printf("Enter the C code where you want the comments removed:\n");
     while((c = getchar()) != EOF){
+        if(c == '\n'){ // add new line if new line encountered
+            arr[i] = '\n';
+            ++i;
+        }
         if(c != '\t' && c != '\n'){
-            if(c == '/' && getchar() == '/'){ 
-                while(getchar() != '\n')
-                    getchar();
-            }else{
+            if(c == '/'){ // if input is /
+                if(getchar() == '/' || getchar() == '*'){ // and / or *
+                    while(getchar() != '\n')
+                       getchar(); // skip everything until new line
+                }
+                else if(c == '/' || c == '*'){ // check for / and *
+                    while(getchar() != '\n')
+                       getchar();
+                }
+            }else{ // else, pass input into array
                 arr[i] = c;
                 ++i;
             }
         }
     }
     arr[i] = 0;
+    return i;
+}
+
+void printResult(char arr[], int i){
+    printf("\nWithout comments:\n");
+    for(int j = 0; j < i; j++)
+        printf("%c", arr[j]);
     printf("\n");
-    printf("%s", arr);
-    printf("\n");
+}
+
+int main(){
+    int i;
+    char arr[MAXLEN];
+    i = getInput(arr);
+    printResult(arr, i);
     return 0;
 }
