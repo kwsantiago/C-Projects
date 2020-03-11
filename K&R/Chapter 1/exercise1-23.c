@@ -18,10 +18,10 @@ int getInput(char arr[]){
             ++i;
         }
         if(c != '\n'){
-            if(c == '/'){ // if input is /
-                if(c == '/' || c == '*'){ // check for / and *
+            if(c == '/'){ // if the start of a comment is encountered
+                if(c == '/' || c == '*'){ // check for comment with / and *
                     while(getchar() != '/')
-                        arr[i] = ' ';
+                        arr[i] = ' '; // add empty spaces until end of comment reached
                         ++i;
                 }
             }else{ // else, pass input into array
@@ -31,11 +31,17 @@ int getInput(char arr[]){
         }
     }
     arr[i] = 0;
-        return i;
+    return i;
 }
 
 void printResult(char arr[], int i){
-    printf("\nWithout comments:\n");
+    int j;
+    for(j = 0; j < 17; j++)
+        printf("_");
+    printf("\nWithout comments\n");
+    for(j = 0; j < 17; j++)
+        printf("_");
+    printf("\n\n");
     for(int j = 0; j < i; j++)
         printf("%c", arr[j]);
     printf("\n");
