@@ -1,5 +1,6 @@
-// Exercise 1-23. Write a program to remove all comments from a C program. Don't forget to
-// handle quoted strings and character constants properly. C comments don't nest. 
+// Exercise 1-23. Write a program to remove all comments from a C program
+// Don't forget to handle quoted strings and character constants properly.
+// C comments don't nest. 
 
 #include <stdio.h>
 
@@ -13,15 +14,14 @@ int main(){
             if(c == '/' && getchar() == '/'){ 
                 while(getchar() != '\n')
                     getchar();
-            }else if(c == '/' && getchar() == '*'){ 
-                while(getchar() != '\n')
-                    getchar();
-            }else if(c != '/' && c != '*'){
+            }else{
                 arr[i] = c;
                 ++i;
             }
         }
     }
+    arr[i] = 0;
+    printf("\n");
     printf("%s", arr);
     printf("\n");
     return 0;
