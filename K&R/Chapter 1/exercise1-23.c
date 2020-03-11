@@ -17,13 +17,9 @@ int getInput(char arr[]){
             arr[i] = '\n';
             ++i;
         }
-        if(c != '\t' && c != '\n'){
+        if(c != '\n'){
             if(c == '/'){ // if input is /
-                if(getchar() == '/' || getchar() == '*'){ // and / or *
-                    while(getchar() != '\n')
-                       getchar(); // skip everything until new line
-                }
-                else if(c == '/' || c == '*'){ // check for / and *
+                if(c == '/' || c == '*'){ // check for / and *
                     while(getchar() != '\n')
                        getchar();
                 }
