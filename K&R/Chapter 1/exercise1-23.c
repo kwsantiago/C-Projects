@@ -20,8 +20,9 @@ int getInput(char arr[]){
         if(c != '\n'){
             if(c == '/'){ // if input is /
                 if(c == '/' || c == '*'){ // check for / and *
-                    while(getchar() != '\n')
-                       getchar();
+                    while(getchar() != '/')
+                        arr[i] = ' ';
+                        ++i;
                 }
             }else{ // else, pass input into array
                 arr[i] = c;
@@ -30,7 +31,7 @@ int getInput(char arr[]){
         }
     }
     arr[i] = 0;
-    return i;
+        return i;
 }
 
 void printResult(char arr[], int i){
