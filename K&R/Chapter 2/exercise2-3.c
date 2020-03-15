@@ -39,9 +39,8 @@ int htoi(char *p){
 }
 
 int main(){
-    char *s = malloc(sizeof(char)), *p = s;
-    getLine(p);
-    p = s; // reset pointer to start of array
-    printf("\nThe integer value of %s is %d.\n", s, htoi(p));
+    char *s = malloc(sizeof(char));
+    getLine(s);
+    printf("\nThe integer value of %s is %d.\n", s, htoi(s));
     return 0;
 }
