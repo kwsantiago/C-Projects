@@ -10,13 +10,13 @@
 
 #define MAXLEN 20
 
-int htoi(int *string);
+int htoi(char *string);
 
-int htoi(int *string){
+int htoi(char *string){
    int *p, n;
    n = 0;
-   for(p = string; *p != '\0'; p++)
-       n = 10 * n + ((int)*p - '0');
+   for(p = string; *p != '\0' && isdigit(*p); p++)
+       n = 10 * n + (*p - '0');
    return n;
 }
 
