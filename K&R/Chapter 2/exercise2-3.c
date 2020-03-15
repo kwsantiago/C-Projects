@@ -23,17 +23,17 @@ void getLine(char *p){
 }
 
 int htoi(char *p){
-    int n, i;
-    n = i = 0;
-    if((*p - '0') == 0){
-        ++p;
+    int n, c;
+    n = 0;
+    if((*p - '0') == 0){ // if first element is 0,
+        ++p;             // skip ahead 2 elements
         ++p;
     }
-    for(;*p != '\0'; p++){
-        int c = tolower(*p);
-        if(c >= '0' && c <= '9')
+    for(;*p != '\0'; p++){ // go through the array
+        c = tolower(*p); // current element to lower case
+        if(c >= '0' && c <= '9') // convert numbers to int
             n = 16 * n + (c - '0');
-        else if(c >= 'a' && c <= 'f')
+        else if(c >= 'a' && c <= 'f') // convert letters to int
             n = 16 * n + (c - 'a' + 10);
     }
     return n;
