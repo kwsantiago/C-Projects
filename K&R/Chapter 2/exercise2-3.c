@@ -5,7 +5,6 @@
 // I chose to do this exercise with pointers instead of sending the array by value.
 
 #include <stdio.h>
-#include <math.h>
 #include <stdlib.h>
 #include <ctype.h>
 
