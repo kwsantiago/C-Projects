@@ -7,29 +7,42 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+#include <ctype.h>
 
-#define MAXLEN 20
+void getLine(char *p);
+int htoi(char *p);
 
-int htoi(char *string);
+void getLine(char *p){
+    int c;
+    printf("Enter a string of hexadecimal digits: ");
+    while((c = getchar()) != EOF && c != '\n'){
+        *p = c;
+        p++;
+    }
+    *p++ = '\0';
+}
 
-int htoi(char *string){
-   int *p, n;
-   n = 0;
-   for(p = string; *p != '\0' && isdigit(*p); p++)
-       n = 10 * n + (*p - '0');
-   return n;
+int htoi(char *p){
+    int n, i;
+    n = i = 0;
+    if((*p - '0') == 0){
+        ++p;
+        ++p;
+    }
+    for(;*p != '\0'; p++){
+        int c = tolower(*p);
+        if(c >= '0' && c <= '9')
+            n = 16 * n + (c - '0');
+        else if(c >= 'a' && c <= 'f')
+            n = 16 * n + (c - 'a' + 10);
+    }
+    return n;
 }
 
 int main(){
-    char *string = malloc(sizeof(char)), *p;
-    printf("Enter a string of hexadecimal digits: ");
-    for(p = string; p < string + MAXLEN; p++)
-        scanf("%c", p);
-    *p++ = '\0';
-    printf("\nTo Int: %d", htoi(string));
-    printf("\n");
-    for(p = string; *p != '\0'; p++)
-        printf("%c", *p);
-    printf("\n");
-   return 0;
+    char *s = malloc(sizeof(char)), *p = s;
+    getLine(p);
+    p = s; // reset pointer to start of array
+    printf("\nThe integer value of %s is %d.\n", s, htoi(p));
+    return 0;
 }
