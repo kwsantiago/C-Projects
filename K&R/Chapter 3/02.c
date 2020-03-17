@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 void getLine(char *s);
-void escape(char *s, char *t);
+void escape(char *s, const char *t);
 
 void getLine(char *s){
     int c;
@@ -17,30 +17,31 @@ void getLine(char *s){
     *s++ = '\0';
 }
 
-void escape(char *s, char *t){
-    for(; *s != '\0'; s++){
-        switch(*s){
-            case '\n':
-                *s = '\\';
-                *s++ = '\n';
-                *s++ = '\n';
-                s++;
-                break;
-            default:
-                *t = *s;
-                t++;
-                s++;
-                break;
+void escape(char *s, const char *t){
+    const char *r;
+    for(; *s != '\0'; ++s){
+        for(r = t; *r != '\0'; ++r){
+            switch(*r){
+                case '\n':
+                    *s++ = '\\';
+                    *s++ = 'n';
+                    *s++ = '\n';
+                    break;
+                default:
+                    *s++ = *r;
+                    break;
+            }
         }
     }
+    *s = '\0';
 }
 
 int main(){
-    char *s = malloc(sizeof(char)), *t = malloc(sizeof(char));
-    getLine(s);
-    escape(t, s);
-    printf("%s\n", t);
-    free(s);
-    free(t);
+    char *tmp = malloc(sizeof(char)), *arr = malloc(sizeof(char));
+    getLine(tmp);
+    escape(arr, tmp);
+    printf("%s\n", arr);
+    free(tmp);
+    free(arr);
     return 0;
 }
