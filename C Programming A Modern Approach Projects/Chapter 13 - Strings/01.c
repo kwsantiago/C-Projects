@@ -5,12 +5,19 @@ int getInput(char *arr, char *sm, char *la);
 
 int getInput(char *arr, char *sm, char *la){
     int c, i = 0;
+    char *tmp = arr;  
     while((c = getchar()) != '\n'){
         i++;
         *arr = c;
         arr++;
     }
     *arr = '\0';
+    for(; *tmp != '\0'; tmp++){
+        *sm = *tmp;
+        *la = *tmp;
+        sm++;
+        la++;
+    }
     return i;
 }
 
