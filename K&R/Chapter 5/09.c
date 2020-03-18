@@ -8,14 +8,8 @@ static char daytab[2][13] = {
  /* day_of_year: set day of year from month & day */
 int day_of_year(int year, int month, int day){
     int i, leap, reject = -1;
-    char *p = &daytab[leap][1];
     leap = year%4 == 0 && year%100 != 0 || year%400 == 0;
-    if(year < 1900 || year > 2020)
-        return reject;
-    else if(month < 1 || month > 12)
-        return reject;
-    else if(day < 1 || day > 31)
-        return reject;
+    char *p = &daytab[leap][1];
     for (i = 1; i < month; i++){
         day += *p++;
     }
@@ -24,10 +18,9 @@ int day_of_year(int year, int month, int day){
  /* month_day: set month, day from day of year */
 int month_day(int year, int yearday, int *pmonth, int *pday)
 {
-    int i, leap;
+    int i, leap = year%4 == 0 && year%100 != 0 || year%400 == 0;
     char *p = &daytab[leap][1];
-    leap = year%4 == 0 && year%100 != 0 || year%400 == 0;
-    for (i = 1; yearday > daytab[leap][i]; i++)
+    for(i = 1; yearday > *p; i++)
         yearday -= *p++; 
     *pmonth = i;
     *pday = yearday;
