@@ -6,9 +6,9 @@
 void strCat(char *s, char *t);
 
 void strCat(char *s, char *t){
-    while(*s++);
-    s--;
-    while(*s++ = *t++);
+    while(*s++); // go to the end of the array
+    s--; // go back one to account for '\0'
+    while(*s++ = *t++); // copy contents from t to s
 }
 
 int main(){
