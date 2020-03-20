@@ -1,9 +1,10 @@
 #include <stdio.h>
 
 int main(int argc, char* argv[]){
-    char **p = &argv[argc-1];
-    for(; p != &argv[0]; p--){
-        printf("%s ", *p);
+    char **current = &argv[argc-1];
+    char **first = &argv[0];
+    for(; current != first; current--){
+        printf("%s ", *current);
     }
     printf("\n");
     return 0;
