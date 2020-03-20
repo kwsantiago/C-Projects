@@ -1,0 +1,2 @@
+# Palindrome
+The main() will pass both data received from get_msg() to palindrome(), which returns either true or false, depending on if the array contents is a palindrome. Based on this return, main() prints a simple message, 'Palindrome' or 'Not a palindrome'. One uses pointers while the other does not.
