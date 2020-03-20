@@ -1,9 +1,19 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include <stdbool.h>
 
 #define NUM_PLANETS 9
+
+int nocase_strcmp(const char *s1, const char *s2);
+
+int nocase_strcmp(const char *s1, const char *s2){
+    int i;
+    for(i = 0; tolower(s1[i]) == tolower(s2[i]); i++){
+        if(s1[i] == '\0')
+            return 0;
+    }
+    return s1[i] - s2[i];
+}
 
 int main(int argc, char* argv[]){
     char *planets[] = {"Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto"};
@@ -12,7 +22,7 @@ int main(int argc, char* argv[]){
     for(; *i != NULL; i++){
         for(; *j != NULL; j++){
             ++count;
-            if(strcmp(*i, *j) == 0){
+            if(nocase_strcmp(*i, *j) == 0){
                 printf("%s is planet %d", *i, count);
                 break;
             }
