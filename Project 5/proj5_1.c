@@ -5,7 +5,7 @@ float min(int total, char *data[total]);  // it returns the minimum of data[1]~d
 float min2(int total, char *data[total]);  // it returnsthe second minimum of data[1]~data[total]
 float max(int total, char *data[total]);  // it returns the maximum of data[1]~data[total]
 float max2(int total, char *data[total]);  // it returns the second maximum of data[1]~data[total]
-void sum_avg(int total, char *data[total], float *, float *);  // it returns the sum and average of data[1]~data[total] through its 3rd and 4th parameters, respectively.
+void sum_avg(int total, char *data[total], float *sum, float *avg);  // it returns the sum and average of data[1]~data[total] through its 3rd and 4th parameters, respectively.
 
 float min(int total, char *data[total]){
     int i;
@@ -57,12 +57,12 @@ float max2(int total, char *data[total]){
     return max2;
 }
 
-/*void sum_avg(int total, char *data[total], float *, float *){
-    float sum = 0.0;
-    for(; *p; p++) // go through the input
-        sum += atof(*p); // add the input to sum
-    printf("Total: %.3f", sum); // print the total
-}*/
+void sum_avg(int total, char *data[total], float *sum, float *avg){
+    int i;
+    for(i = 1; i <= total; i++) // go through the input
+        *sum += atof(data[i]); // add the input to sum
+    *avg = *sum / total;
+}
 
 int main(int argc, char* argv[]){
     if(argc <= 2){
@@ -70,10 +70,16 @@ int main(int argc, char* argv[]){
         return 0;
     }
     int total = argc-1;
-    float *sum, *average;
+    float sum = 0.0, avg = 0.0;
+    float *psum = &sum, *pavg = &avg;
     printf("Total numbers entered = %d\n", total);
     printf("min = %.3f\n", min(total, argv));
     printf("min2 = %.3f\n", min2(total, argv));
+    printf("max = %.3f\n", max(total, argv));
+    printf("max2 = %.3f\n", max2(total, argv));
+    sum_avg(total, argv, psum, pavg);
+    printf("sum = %.3f\n", *psum);
+    printf("avg = %.3f\n", *pavg);
     printf("\n");
     return 0;
 }
