@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define LEN 80 + 1
+#define LEN 100 + 1
 
 int read_line(char str[], int n);
 void encrypt(char *message, int shift);
