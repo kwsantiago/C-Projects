@@ -72,6 +72,10 @@ int main(int argc, char* argv[]){
     int total = argc-1;
     float sum = 0.0, avg = 0.0;
     float *psum = &sum, *pavg = &avg;
+    for(int i = 1; i <= total; i++){ // go through the input
+        if(argv[i][0] == '.') // if the first character in an input is invalid
+            argv[i] = "0.0"; // set the input to 0.0
+    }
     printf("Total numbers entered = %d\n", total);
     printf("min = %.3f\n", min(total, argv));
     printf("min2 = %.3f\n", min2(total, argv));
