@@ -10,11 +10,26 @@ void sum_avg(int total, char *data[total], float *, float *);  // it returns the
 float min(int total, char *data[total]){
     int i;
     float min = atof(data[1]); // first input excluding filename
-    for(i = 2; i <= total; i++){ // go through array starting at 2nd input
+    for(i = 2; i <= total; i++){ /// go through array starting at first input excluding filename
         if(atof(data[i]) < min) // if the floating value of teh current element is less than min
             min = atof(data[i]); // set the value of min to the floating value of current element
     }
     return min;
+}
+
+float min2(int total, char *data[total]){
+    int i;
+    float min, min2; 
+    min = atof(data[1]); // set to first input excluding filename
+    min2 = atof(data[total]); // set to last input
+    for(i = 2; i <= total; i++){ // go through array starting at first input excluding filename
+        if(min > atof(data[i])){ // if min is bigger than current element
+            min2 = min; // set min2 to min
+            min = atof(data[i]); // set min to current element
+        }else if(min2 > atof(data[i]) && atof(data[i]) > min) // else if current element is smaller than min2 AND bigger than min
+            min2 = atof(data[i]); // set min to current element
+    }
+    return min2;
 }
 
 /*void sum_avg(int total, char *data[total], float *, float *){
@@ -33,7 +48,7 @@ int main(int argc, char* argv[]){
     float *sum, *average;
     printf("Total numbers entered = %d\n", total);
     printf("min = %.3f\n", min(total, argv));
-    printf("min2 = %.3f\n", min(total, argv));
+    printf("min2 = %.3f\n", min2(total, argv));
     printf("\n");
     return 0;
 }
