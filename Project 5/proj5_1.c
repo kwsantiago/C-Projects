@@ -32,6 +32,31 @@ float min2(int total, char *data[total]){
     return min2;
 }
 
+float max(int total, char *data[total]){
+    int i;
+    float max = atof(data[1]); // first input excluding filename
+    for(i = 2; i <= total; i++){ /// go through array starting at first input excluding filename
+        if(atof(data[i]) > max) // if the floating value of teh current element is greater than max 
+            max = atof(data[i]); // set the value of max to the floating value of current element
+    }
+    return max;
+}
+
+float max2(int total, char *data[total]){
+    int i;
+    float max, max2; 
+    max = atof(data[1]); // set to first input excluding filename
+    max2 = atof(data[total]); // set to last input
+    for(i = 2; i <= total; i++){ // go through array starting at first input excluding filename
+        if(max < atof(data[i])){ // if max is smaller than current element
+            max2 = max; // set max2 to min
+            max = atof(data[i]); // set max to current element
+        }else if(max2 < atof(data[i]) && atof(data[i]) < max) // else if current element is bigger than min2 AND smaller than min
+            max2 = atof(data[i]); // set min to current element
+    }
+    return max2;
+}
+
 /*void sum_avg(int total, char *data[total], float *, float *){
     float sum = 0.0;
     for(; *p; p++) // go through the input
