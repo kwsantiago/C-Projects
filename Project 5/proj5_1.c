@@ -49,10 +49,10 @@ float max2(int total, char *data[total]){
     max2 = atof(data[total]); // set to last input
     for(i = 2; i <= total; i++){ // go through array starting at first input excluding filename
         if(max < atof(data[i])){ // if max is smaller than current element
-            max2 = max; // set max2 to min
+            max2 = max; // set max2 to max
             max = atof(data[i]); // set max to current element
-        }else if(max2 < atof(data[i]) && atof(data[i]) < max) // else if current element is bigger than min2 AND smaller than min
-            max2 = atof(data[i]); // set min to current element
+        }else if(max2 < atof(data[i]) && atof(data[i]) < max) // else if current element is bigger than max2 AND smaller than max
+            max2 = atof(data[i]); // set max2 to current element
     }
     return max2;
 }
@@ -61,7 +61,7 @@ void sum_avg(int total, char *data[total], float *sum, float *avg){
     int i;
     for(i = 1; i <= total; i++) // go through the input
         *sum += atof(data[i]); // add the input to sum
-    *avg = *sum / total;
+    *avg = *sum / total; // get avg by dividing sum by total
 }
 
 int main(int argc, char* argv[]){
