@@ -39,7 +39,6 @@ int main(){
             continue;
         }
         answer = atoi(str);
-        //scanf("%d", &answer);
         if(answer < 2 || answer > 8){
             if(answer == 0)
                 continue;
