@@ -4,53 +4,51 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <ctype.h>
 
-#define LEN 10
+#define STACK_SIZE 1024
 
-int rPolish(char *p){
-    int nums[LEN], *pNums = nums, i = 0, numCount = 0, charCount = 0, answer = 0;
-    char chars[LEN], *pChars = chars;
-    for(i = 0; i < LEN; i++){
-        nums[i] = 0; // set everything in int array to 0
-        chars[i] = ' '; // set everything in char array to ' '
+double stack[STACK_SIZE];
+int stack_height = 0;
+
+void push(double value){
+    if(stack_height == STACK_SIZE){
+        perror("Stack too high!");
+        exit(EXIT_FAILURE);
     }
-    i = 0; // reset i
-    for(; *p != '\0'; p++){
-        if(isdigit(*p)) // check if current element is a digit
-            *pNums++ = (*p - '0'); // set element to numerical value of the char element
-        else
-            *pChars++ = *p; // if not just put it in the char array
+    stack[stack_height++] = value;
+}
+
+double pop(){
+    if(stack_height == 0){
+        perror("Stack too high!");
+        exit(EXIT_FAILURE);
     }
-    // math part
-    pChars = chars, pNums = nums; // reset pointers to start of array
-    for(; *pNums != 0; pNums++){
-        for(; *pChars != ' '; pChars++){
-            if(*pChars == '+'){
-                pNums++;
-                answer = (*pNums++ + *pNums);
-            }
-            else if(*pChars == '*')
-                answer *= nums[0];
+    return stack[--stack_height];
+}
+
+int main(int argc, char* argv[]){
+    int i;
+
+    for(i = 0; i < argc; ++i){
+        switch(argv[i][0]){
+            case '1': case '2': case '3': case '4': case '5': case '6':case '7': case '8': case '9':
+                push(atof(argv[i]));
+                break;
+            case '+':
+                push(pop() + pop());
+                break;
+            case '-':
+                push(pop() - pop());
+                break;
+            case '*':
+                push(pop() * pop());
+                break;
+            case '/':
+                push(pop() / pop());
+                break;
         }
     }
-    return answer;
-}
-
-void getInput(char *p){
-    int c;
-    printf("Enter a reverse Polish expression: ");
-    while((c = getchar()) != '\n'){
-        if(c != ' ')
-            *p++ = c;
-    }
-    *p = '\0';
-}
-
-int main(int argc, char *argv[]){
-    char *arr = malloc(sizeof(char)), *p = arr;
-    getInput(p);
-    printf("%d\n", rPolish(p));
+    printf("%g\n", pop());
     return 0;
 }

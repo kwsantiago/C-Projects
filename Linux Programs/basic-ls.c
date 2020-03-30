@@ -23,6 +23,8 @@ int main(int argc, char *argv[]){
 
     if(argc > 1 && strncmp(*p, "-A", 2) == 0){
         while((sd = readdir(dir)) != NULL){
+            if(sd->d_name == '.' || sd->d_name == '..')
+                continue;
             printf("%s ", sd->d_name);
         }
         closedir(dir);
